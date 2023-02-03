@@ -35,35 +35,41 @@ const caesarModule = (function () {
   ];
   function caesar(input, shift, encode = true) {
     if (!shift || shift === 0 || shift > 25 || shift < -25) return false;
-   
-    //Set a variable to an empty array to hold the final results
+
+    //Set a variable to an empty array to hold the resulting letters
     let result = [];
-    input = input.toLowerCase().split("");//ignore capital letters and place given message into an array
-    if (encode) { //encode message when encode is set to true
-      input.forEach((newLetter) => {//loop through message and find if it is in the alphabet
-        if (alphabet.includes(newLetter)) {//check if letter/character/space is in alphabet
+    input = input.toLowerCase().split(""); //ignore capital letters and place given message into an array
+    if (encode === true) {
+      //encode message when encode is set to true
+      input.forEach((newLetter) => {
+        //loop through message array
+        if (alphabet.includes(newLetter)) {
+          //check if letter/character/space is in alphabet
           alphabet.find((letter, index) => {
-            if (letter === newLetter) {//index of ABC letter is same as index of message letter
+            if (letter === newLetter) {
+              //index of ABC letter is same as index of message letter
               let encoIdx = index + shift; //shift to a different index/letter depending on the shift number
-              if (encoIdx < 0) encoIdx += 26;//loop around length of alphabet
+              if (encoIdx < 0) encoIdx += 26; //loop around length of alphabet
               if (encoIdx > 25) encoIdx -= 26;
-              let changingLett = alphabet[encoIdx];//assign encoded letter to corresponding letter in message
+              let changingLett = alphabet[encoIdx]; //assign encoded letter to corresponding letter in message
               result.push(changingLett); //push encoded letter to result array
             }
           });
         } else {
-          result.push(newLetter);// if not in alphabet, maintain spaces and symbols
+          result.push(newLetter); // if not in alphabet, maintain spaces and symbols
         }
       });
     } else {
+      //decode message if encode is set to false
       input.forEach((newLetter) => {
-        if (alphabet.includes(newLetter)) {//check if letter/character is in the alphabet array
+        if (alphabet.includes(newLetter)) {
+          //check if letter/character is in the alphabet array
           alphabet.find((letter, index) => {
             if (letter === newLetter) {
               let decoIdx = index - shift;
-              if (decoIdx < 0) decoIdx += 26;// loop around length of alphabets
+              if (decoIdx < 0) decoIdx += 26; // loop around length of alphabets
               if (decoIdx > 25) decoIdx -= 26;
-              let changingLett = alphabet[decoIdx];// shift encoded letter back to proper letter
+              let changingLett = alphabet[decoIdx]; // shift encoded letter back to proper letter
               result.push(changingLett); // push changed letter into results array
             }
           });

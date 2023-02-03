@@ -105,7 +105,7 @@ const polybiusModule = (function () {
     return result;
   }
   return {
-    polybius,
+    polybius,  
   };
 })();
 

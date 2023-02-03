@@ -34,8 +34,8 @@ const substitutionModule = (function () {
       });
       return message.join(""); //join array into a string
     };
-
-    const decodedMess = () => {
+   
+    const decodedMess = () => { 
       let message = [];
       const decode = (lett) => {
         const letterIdx = subAlphabet.indexOf(lett); // find sub letter index

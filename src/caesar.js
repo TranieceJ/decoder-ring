@@ -72,7 +72,7 @@ const caesarModule = (function () {
               let changingLett = alphabet[decoIdx]; // shift encoded letter back to proper letter
               result.push(changingLett); // push changed letter into results array
             }
-          });
+          });  
         } else {
           result.push(newLetter); //maintain spaces and symbols
         }
